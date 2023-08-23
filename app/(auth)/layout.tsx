@@ -9,17 +9,17 @@ export const metadata = {
 }
 
 const inter = Inter( { subsets : ['latin'] } )
-//                                this is props        here define type which is object       
+          
 export default function RootLayout({
-    children
+    children   //                     this is props  
 }: {
-    children: React.ReactNode
+    children: React.ReactNode  //     here define type which is object   
 }) {
     return (
         <ClerkProvider>
             <html lang="en">
                  <body className={`${inter.className} bg-dark-1`}>
-
+                    {children}
                  </body>
             </html>
         </ClerkProvider>
