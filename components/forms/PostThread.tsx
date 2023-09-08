@@ -32,7 +32,7 @@ interface Props {
 }
 
 function PostThread({ userId }: {userId: string }) {
-    
+    // await createThread()
   const router = useRouter();
   const pathname = usePathname();
 
@@ -44,7 +44,8 @@ function PostThread({ userId }: {userId: string }) {
     },
   });
 
-  const onSubmit = () => {console.log("dfghjk");
+  const onSubmit = () => {
+
   }
     return (
         <Form {...form}>
