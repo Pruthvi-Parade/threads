@@ -17,7 +17,8 @@ import {
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { ThreadValidation } from "@/lib/validations/thread";
-// import { updateUser } from "@/lib/actions/user.actions";
+import { createThread } from "@/lib/actions/thread.actions";
+import { updateUser } from "@/lib/actions/user.actions";
 
 interface Props {
   user: {
@@ -32,20 +33,28 @@ interface Props {
 }
 
 function PostThread({ userId }: {userId: string }) {
-    
   const router = useRouter();
   const pathname = usePathname();
 
   const form = useForm({
     resolver: zodResolver(ThreadValidation),
     defaultValues: {
-      thread: '',
+      thread: "",
       accountId: userId,
     },
   });
 
-  const onSubmit = () => {console.log("dfghjk");
+  const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
+    await  ({
+      text: values.thread,
+      author: userId,
+      communityId: null,
+      path: pathname
+    })
+
+    router.push("/");
   }
+  
     return (
         <Form {...form}>
             <form
